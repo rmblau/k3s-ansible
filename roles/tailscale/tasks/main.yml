@@ -1,0 +1,9 @@
+- name: download and install tailscale
+  shell: | 
+    curl -fsSL https://tailscale.com/install.sh | sh
+  args:
+    executable: /bin/bash
+  register: k3s_result
+
+
+

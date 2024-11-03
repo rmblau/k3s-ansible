@@ -1,0 +1,6 @@
+---
+- name: download and execute k3s script
+  shell: | 
+    curl -sfL https://get.k3s.io | K3S_URL=https://{{ K3S_URL }}:6443 K3S_TOKEN={{ K3S_TOKEN }} sh -s - --vpn-auth=name="tailscale,joinKey={{ TAILSCALE_JOIN_KEY }}"
+  register: k3s_result
+  become: yes

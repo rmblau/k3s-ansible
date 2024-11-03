@@ -1,0 +1,21 @@
+---
+- name: install docker and k3s
+  hosts: all
+  gather_facts: true
+  become: yes
+
+  tasks:
+    - name: update OS
+      import_role: 
+        name: common
+
+    - name: import docker tasks
+      import_role: 
+        name: docker
+
+    - name: import tailscale tasks
+      import_role:
+        name: tailscale
+    - name: import k3s tasks
+      import_role: 
+        name: k3s
