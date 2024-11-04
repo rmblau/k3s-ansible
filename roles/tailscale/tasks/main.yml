@@ -3,7 +3,11 @@
     curl -fsSL https://tailscale.com/install.sh | sh
   args:
     executable: /bin/bash
-  register: k3s_result
+
+- name: join to tailscale
+  shell: |
+    tailscale up --authkey {{ TAILSCALE_JOIN_KEY }} --accept-routes
+  become: yes
 
 
 
