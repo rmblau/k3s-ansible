@@ -1,0 +1,16 @@
+---
+- name: update nodes
+  hosts: all
+  gather_facts: false
+  serial: 1
+
+  tasks:
+    - name: prepare node for updates
+      import_role:
+        name: kubernetes/drain
+    - name: update OS
+      import_role: 
+        name: common
+    - name: Prepare node for workloads
+      import_role:
+        name: kubernetes/uncordon

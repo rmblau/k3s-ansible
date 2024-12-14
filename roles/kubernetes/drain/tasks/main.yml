@@ -1,0 +1,11 @@
+- name: install pre-requisites
+  pip:
+    name:
+      - kubernetes
+    break_system_packages: true
+- name: Mark node as unschedulable.
+  kubernetes.core.k8s_drain:
+    state: cordon
+    name: "{{ inventory_hostname }}"
+    kubeconfig: ~/.kube/config
+    validate_certs: false

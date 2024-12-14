@@ -28,7 +28,9 @@
 - name: Add user to docker group
   user:
     name: "{{ ansible_user }}"
-    groups: docker
+    groups:
+      - docker
+      - sudo
  
 - name: Start Docker service
   service:

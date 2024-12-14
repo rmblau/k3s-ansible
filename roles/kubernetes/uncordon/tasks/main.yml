@@ -1,0 +1,5 @@
+- name: Mark node as schedulable.
+  kubernetes.core.k8s_drain:
+    state: uncordon
+    name: "{{ inventory_hostname }}"
+    kubeconfig: ~/.kube/config
